@@ -8,7 +8,8 @@ import {BarChart} from "lucide-react"
 import {SidebarItem} from "./sidebar-item"
 import {List} from "lucide-react"
 import {usePathname} from "next/navigation"
-
+import {Link} from "lucide-react"
+import {Hash} from "lucide-react"
 
 const guestRoutes = [
 
@@ -24,30 +25,30 @@ const guestRoutes = [
           { icon: CreditCard,
           label: "Payments",
           href: "/payments"},
-          { icon: Compass,
+          { icon: Link,
           label: "Social",
           href: "/social"},
-          
+          { icon: Hash,
+          label: "Notification",
+          href: "/notice"},
 ]
 
-const adminRoutes = [
-
+const userRoutes = [
           { icon: List,
            label: "List Explore",
-           href: "/admin/manages"},
+           href: "/user/manages"},
            { icon: BarChart,
            label: "Analytics",
-           href: "/admin/analytics"},
-           
+           href: "/user/analytics"},
  ]
 
 export const SidebarRoutes = () => {
 
           const pathname = usePathname();
 
-          const isAdminPage = pathname?.includes("/admin")
+          const isUserPage = pathname?.includes("/user")
 
-          const routes = isAdminPage ? adminRoutes : guestRoutes;
+          const routes = isUserPage ? userRoutes : guestRoutes;
 
           return(
                     <div className="flex flex-col w-full">

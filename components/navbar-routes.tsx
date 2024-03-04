@@ -9,20 +9,20 @@ import Link from "next/link";
 export const NavbarRoutes = () => {
   const pathname = usePathname();
 
-  const isAdminPage = pathname?.startsWith("/admin");
-  const isUserPage = pathname.includes("/user");
+  const isUserPage = pathname?.startsWith("/admin");
+  const isGuestPage = pathname.includes("/user");
 
   return (
     <div className="flex gap-x-2 ml-auto">
-      {isAdminPage || isUserPage ? 
+      {isUserPage || isGuestPage ? 
       (<Link href="/">
           <Button> 
                     <LogOut className="h-4 w-4 mr-2"/>
                     Exit
           </Button>
       </Link> ): (
-          <Link href="/admin/manages">
-                    <Button size="sm" >Admin mode</Button>
+          <Link href="/user/manages">
+                    <Button size="sm" >User mode</Button>
           </Link>
       )}    
       <UserButton 
